@@ -1,0 +1,4 @@
+Netlify site id = 27c142df-9ecc-44c7-980f-f40b317d8e12
+Netlify Token = nfp_bLtnZi2Kq4KoFeBi5WreSh1poEqtF5PX34dc
+
+มีการติดตั้ง Node.js บน Jenkins (Docker-based Jenkins Agent)
