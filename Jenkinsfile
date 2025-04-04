@@ -8,12 +8,6 @@ pipeline {
 
     stages {
         stage('Build') {
-            agent {
-                docker {
-                    image 'node:18-alpine'
-                    reuseNode true
-                }
-            }
             steps {
                 echo "🔧 Checking required files..."
                 sh '''
@@ -25,12 +19,6 @@ pipeline {
         }
 
         stage('Test') {
-            agent {
-                docker {
-                    image 'node:18-alpine'
-                    reuseNode true
-                }
-            }
             steps {
                 echo "🧪 Testing quote function load..."
                 sh '''
@@ -40,17 +28,11 @@ pipeline {
         }
 
         stage('Deploy') {
-            agent {
-                docker {
-                    image 'node:18-alpine'
-                    reuseNode true
-                }
-            }
             steps {
                 echo "🚀 Deploying to Netlify..."
                 sh '''
                     npm install netlify-cli
-                    node_modules/.bin/netlify deploy \
+                    ./node_modules/.bin/netlify deploy \
                       --auth=$NETLIFY_AUTH_TOKEN \
                       --site=$NETLIFY_SITE_ID \
                       --dir=. \
