@@ -1,22 +1,55 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8" />
-  <title>💬 คำคมสร้างแรงบันดาลใจ</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>สุ่มคำคม</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #fffbe0;
+      text-align: center;
+      padding-top: 80px;
+    }
+    h1 {
+      color: #ff6600;
+    }
+    #quote {
+      font-size: 24px;
+      margin: 20px;
+      color: #333;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: #ffcc00;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #ffaa00;
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <h1>☀️ คำคมประจำวัน</h1>
-    <p id="quote">คลิกปุ่มด้านล่างเพื่อรับแรงบันดาลใจใหม่ๆ</p>
-    <button onclick="getQuote()">✨ รับคำคม</button>
-  </div>
+  <h1>✨ คำคมสุ่มใจ ✨</h1>
+  <div id="quote">กดปุ่มเพื่อสุ่มคำคม!</div>
+  <button onclick="getRandomQuote()">สุ่มคำคม</button>
 
   <script>
-    async function getQuote() {
-      const res = await fetch('/.netlify/functions/quote');
-      const data = await res.json();
-      document.getElementById('quote').textContent = `“${data.quote}”`;
+    const quotes = [
+      "ความพยายามไม่เคยทรยศใคร",
+      "ล้มได้แต่อย่าล้มเลิก",
+      "ทุกความฝัน เริ่มต้นที่การลงมือทำ",
+      "เหนื่อยนัก...ก็พักก่อน แล้วค่อยไปต่อ",
+      "ทำวันนี้ให้ดีที่สุด แล้วพรุ่งนี้จะดีเอง",
+      "อย่ายอมแพ้ แค่เพราะวันนี้ยังไม่ถึงเป้าหมาย",
+      "จงเชื่อมั่นในตัวเอง แล้วลงมือทำ"
+    ];
+
+    function getRandomQuote() {
+      const randomIndex = Math.floor(Math.random() * quotes.length);
+      document.getElementById("quote").textContent = quotes[randomIndex];
     }
   </script>
 </body>
